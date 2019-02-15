@@ -17,7 +17,9 @@
       <div class="content">
         <div class="blog">
           <div class="blog_block" v-for="each_result of resultList" :key="each_result.id" @click="handleContentClick(each_result)">
-            <img :src="each_result.image" alt="暂无" width="100px" height="100px" class="blog_image">
+            <div class="image_wrapper">
+              <img :src="each_result.image" alt="暂无"  class="blog_image" align="middle">
+            </div>
             <div class="text_content">
               <div class="title">
                {{each_result.title}}</div>
@@ -122,11 +124,12 @@
             this.limit = 5
             this.start = 0
             if (this.input != "") {
+              this.keyword = this.input
               axios.get("/api/searchBlog", {
                 params: {
                   start: this.start,
                   limit: this.limit,
-                  keyword: this.input
+                  keyword: this.keyword
                 }
               }).then(this.handleSearchSucc)
             }
@@ -229,21 +232,34 @@
     height: 140px;
     border-bottom: 1px solid #D2E0E6;
     /*border: 1px solid blue;*/
+    float: left;
   }
   .blog_block:hover {
     background-color: #eaeaea;
   }
+  .image_wrapper{
+    width: 120px;
+    height: 140px;
+    float: left;
+    /*border: 1px solid red;*/
+    text-align: center;
+  }
   .blog_image {
-    margin: 20px 20px;
+    margin: 10px 10px;
+    /*border:1px solid green;*/
+    /*padding: 0 auto;*/
+
     /*border: 1px solid red;*/
     float: left;
   }
   .text_content {
+    float: left;
     width: 520px ;
     height: 110px;
     float: left;
     color: #555;
     margin-top: 6px;
+    margin-left: 10px;
     /*border: 1px solid yellow;*/
   }
   .title {
@@ -308,9 +324,9 @@
   }
 
   .block {
-    float: bottom;
+    float: left;
     width: 300px;
-    margin: 20px auto ;
+    margin: 20px 300px ;
     /*border:1px solid red;*/
     height: 60px;
   }

@@ -38,15 +38,15 @@
       </el-row>
 
 
-      <!--<el-dialog-->
-        <!--title="提示"-->
-        <!--:visible.sync="imageSizeModifyDialog"-->
-        <!--width="30%">-->
-        <!--<span>文章标题或内容不能为空！</span>-->
-  <!--<span slot="footer" class="dialog-footer">-->
-    <!--<el-button type="primary" @click="addBookDialog = false">确 定</el-button>-->
-  <!--</span>-->
-      <!--</el-dialog>-->
+      <el-dialog
+        title="提示"
+        :visible.sync="submitTipDialog"
+        width="30%">
+        <span>{{submitTipDialogText}}</span>
+  <span slot="footer" class="dialog-footer">
+    <el-button type="primary" @click="submitTipDialog = false">确 定</el-button>
+  </span>
+      </el-dialog>
 
 
 
@@ -64,9 +64,11 @@
               context: ' ',//输入的数据
               title: "",
               blogTime: "",
-              mainImageUrl: "http://47.100.10.8/image/xiao.jpg",
+              mainImageUrl: "http://47.100.10.8/image/xiao1.jpg",
               uploadUrl: "/api/uploadImage",
-              imageSizeModifyDialog: false,
+              articleClass: "",
+              submitTipDialog: false,
+              submitTipDialogText: "提交成功",
               ifMainImage: "true",
               fileList: [],
               toolbars: {
@@ -115,15 +117,38 @@
         handleSubmitClick() {
           //提交信息后台保存到数据库！
           if (this.title != "" && this.context != ""){
-
+            this.blogTime = this.getCurrentTime();
+            this.articleClass = this.title;
+            var formdata = new FormData();
+            formdata.append("title", this.title);
+            formdata.append("content", this.context);
+            formdata.append("image", this.mainImageUrl);
+            formdata.append("time", this.blogTime);
+            formdata.append("article_class", this.articleClass)
+            axios.post("/api/insertBlog", formdata).then(this.handleSubmitClickSucc)
           }
           else {
               this.open();
           }
 
         },
+        handleSubmitClickSucc(res) {
+          res = res.data
+          console.log(res)
+          if (res.ret == "success") {
+
+            console.log("提交成功!")
+            this.submitTipDialog = true;
+            this.title = "";
+            this.context = "";
+          }
+          else {
+            this.submitTipDialogText = "提交失败"
+            this.submitTipDialog = true
+          }
+        },
         open() {
-          this.$message('文章标题或内容不能为空！');
+          this.$message('文章标题或内容不能为空！' + this.getCurrentTime());
         },
 
 
@@ -147,6 +172,21 @@
         handleExceed(files, fileList) {
           this.$message.warning(`当前限制选择 1 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
         },
+        getCurrentTime() {
+          var date = new Date();
+          var seperator1 = "-";
+          var year = date.getFullYear();
+          var month = date.getMonth() + 1;
+          var strDate = date.getDate();
+          if (month >= 1 && month <= 9) {
+            month = "0" + month;
+          }
+          if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+          }
+          var currentdate = year + seperator1 + month + seperator1 + strDate;
+          return currentdate
+        }
 
 
 

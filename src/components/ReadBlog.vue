@@ -91,8 +91,9 @@
   }
   .title {
     width: fit-content;
-    height: 70px;
-    font-size: 60px;
+    height: 60px;
+
+    font-size: 45px;
     font-weight: bold;
     font-family: 宋体;
     margin: 10px auto;
@@ -102,6 +103,7 @@
     height: 30px;
     margin: 1px auto;
     font-size: 12px;
+    font-weight: 500;
     font-family: 宋体;
   }
   .blog_conent {
