@@ -3,10 +3,12 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Blog from "@/components/Blog"
 import ReadBlog from "@/components/ReadBlog"
+import LogIn from "@/components/LogIn"
+import WriteBlog from "@/components/WriteBlog"
 
 Vue.use(Router)
 
-export default new Router({
+const router =  new Router({
   routes: [
     {
       path: '/',
@@ -22,6 +24,30 @@ export default new Router({
       path: "/readBlog",
       name: "ReadBlog",
       component: ReadBlog
+    },
+    {
+      path: "/login",
+      name: "LogIn",
+      component: LogIn
+    },
+    {
+      path: "/writeBlog",
+      name: "WriteBlog",
+      component: WriteBlog
     }
   ]
 })
+
+router.beforeEach((to,from,next)=>{
+  if(to.path=="/login" | to.path == "/blog" | to.path == "/readBlog"){
+    next();
+  }else{
+    if(sessionStorage.user){
+      next()
+    }else{
+      next({path:"/login"})
+    }
+  }
+})
+
+export default router;

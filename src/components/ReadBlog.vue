@@ -79,14 +79,14 @@
     background-color: #f6f6f6;
     width: 100%;
     height: 100%;
-    border: 1px solid green;
+    /*border: 1px solid green;*/
   }
   .content{
     background-color: #ffffff;
     width: 800px;
     height: 100%;
     margin: 50px auto;
-    border:1px solid red;
+    /*border:1px solid red;*/
     box-shadow:0 0 2px #666 ;
   }
   .title {

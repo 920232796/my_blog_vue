@@ -2,7 +2,7 @@
     <div class="container">
       <div class="navigation">
         <!--<img src="@/assets/ww.jpg" alt="" height="120px" class="navigation_image">-->
-        <img src="@/assets/logo-xing.png" alt="" height="40px" class="navigation_image">
+        <img src="@/assets/松鼠.png" alt="" height="40px" class="navigation_image">
         <div class="navigation_text">安 。</div>
         <div class="navigation_class"><span class="single_class" @click="navigation_btn_click($event)">Python</span>
           <span class="single_class" @click="navigation_btn_click($event)">Java</span>
@@ -17,7 +17,7 @@
       <div class="content">
         <div class="blog">
           <div class="blog_block" v-for="each_result of resultList" :key="each_result.id" @click="handleContentClick(each_result)">
-            <img :src="each_result.image" alt="暂无" width="150px" height="80px" class="blog_image">
+            <img :src="each_result.image" alt="暂无" width="100px" height="100px" class="blog_image">
             <div class="text_content">
               <div class="title">
                {{each_result.title}}</div>
@@ -94,15 +94,14 @@
             this.keyword = null;
             this.limit = 5
             this.start = 0
-            if (this.input != "") {
-              axios.get("/api/searchBlog", {
-                params: {
-                  start: this.start,
-                  limit: this.limit,
-                  article_class: this.articleClass
-                }
-              }).then(this.handleSearchSucc)
-            }
+            axios.get("/api/searchBlog", {
+              params: {
+                start: this.start,
+                limit: this.limit,
+                article_class: this.articleClass
+              }
+            }).then(this.handleSearchSucc)
+
           },
 
           handleCurrentChange	(page){
