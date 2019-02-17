@@ -2,12 +2,12 @@
     <div class="container">
       <div class="navigation">
         <!--<img src="@/assets/ww.jpg" alt="" height="120px" class="navigation_image">-->
-        <img src="@/assets/松鼠.png" alt="" height="40px" class="navigation_image">
+        <img src="@/assets/songshu.png" alt="" height="40px" class="navigation_image">
         <div class="navigation_text">安 。</div>
         <div class="navigation_class"><span class="single_class" @click="navigation_btn_click($event)">Python</span>
           <span class="single_class" @click="navigation_btn_click($event)">Java</span>
+          <span class="single_class" @click="navigation_btn_click($event)">vue</span>
           <span class="single_class" @click="navigation_btn_click($event)">深度学习</span>
-          <span class="single_class" @click="navigation_btn_click($event)">前端</span>
           <span class="single_class" @click="navigation_btn_click($event)">服务器</span>
           <span class="single_class" @click="navigation_btn_click($event)">其他</span>
           <span class="single_class" @click="navigation_btn_click($event)">关于</span>
@@ -72,10 +72,14 @@
               totalNumber: 0,
               pageSize: 5,
               articleClass: "python",
-              keyword: null
+              keyword: null,
+              user: "user"
             }
         },
         mounted() {
+            if (sessionStorage.user){
+              this.user = "root";
+            }
             this.start = 0;
             console.log("hello world")
             axios.get("/api/searchBlog", {
@@ -146,11 +150,19 @@
 //            var tempwindow=window.open('_blank');
 //            tempwindow.location="/#/readBlog"
 //            this.$router.push("/readBlog")
-
-            let routeData = this.$router.resolve({ path: "/readBlog",
-              query: {  blogTitle: eachResult.title, content: eachResult.content, blogTime: eachResult.time} });
+            if (this.user == "user"){
+              let routeData = this.$router.resolve({ path: "/readBlog",
+                query: {  blogTitle: eachResult.title, content: eachResult.content, blogTime: eachResult.time} });
 //            routeData.href = "/#/readBlog"
-            window.open(routeData.href, '_blank');
+              window.open(routeData.href, '_blank');
+            }
+            if (this.user == "root") {
+              console.log("hello world !")
+              let routeData = this.$router.resolve({ path: "/editBlog",
+                query: {  blogTitle: eachResult.title, content: eachResult.content, blogId: eachResult.id} });
+              window.open(routeData.href, '_blank');
+            }
+
           }
 
 

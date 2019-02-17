@@ -1,5 +1,10 @@
 <template>
     <div class="container">
+      <div class="wrapper">
+      <div class="message">
+        <img src="@/assets/message.png" alt="" class="message_image" width="30px" height="30px">
+        <div class="message_text">不可评论,问题咨询请加QQ:920232796</div>
+      </div>
       <div class="content">
         <div class="title">{{this.blogTitle}}</div>
         <div class="middle">时间: {{this.blogTime}}</div>
@@ -15,6 +20,7 @@
         ></mavon-editor>
 
       </div>
+    </div>
     </div>
 </template>
 
@@ -77,26 +83,51 @@
 <style scoped>
   .container {
     background-color: #f6f6f6;
+    /*background-color: #2b81af;*/
     width: 100%;
-    height: 100%;
+    height: auto;
     /*border: 1px solid green;*/
+  }
+  .wrapper {
+    width: 100%;
+    height: auto;
+    border: 1px solid #f6f6f6;
+  }
+
+  .message {
+    width: 300px;
+    height: 80px;
+    float: left;
+    /*border: 1px solid red;*/
+  }
+  .message_image {
+    /*border: 1px solid yellow;*/
+    float: left;
+  }
+  .message_text{
+    width: 250px;
+    height: 60px;
+     margin-top: 5px;
+    /*border: 1px solid green;*/
+    font-size: 14px;
+    float: left;
   }
   .content{
     background-color: #ffffff;
     width: 800px;
-    height: 100%;
-    margin: 50px auto;
+    height: auto;
+    margin: 20px auto;
     /*border:1px solid red;*/
     box-shadow:0 0 2px #666 ;
   }
   .title {
     width: fit-content;
     height: 60px;
-
     font-size: 45px;
     font-weight: bold;
     font-family: 宋体;
     margin: 10px auto;
+    /*border: 1px solid red;*/
   }
   .middle{
     width: fit-content;

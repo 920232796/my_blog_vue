@@ -5,6 +5,7 @@ import Blog from "@/components/Blog"
 import ReadBlog from "@/components/ReadBlog"
 import LogIn from "@/components/LogIn"
 import WriteBlog from "@/components/WriteBlog"
+import EditBlog from "@/components/EditBlog"
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ const router =  new Router({
       path: "/writeBlog",
       name: "WriteBlog",
       component: WriteBlog
+    },
+    {
+      path: "/editBlog",
+      name: "EditBlog",
+      component: EditBlog
     }
   ]
 })
