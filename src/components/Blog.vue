@@ -1,6 +1,10 @@
 <template>
     <div class="container">
       <div class="navigation">
+        <div class="message">
+          <img src="@/assets/message.png" alt="" class="message_image" width="30px" height="30px">
+          <div class="message_text">不可评论,问题咨询请加QQ:920232796</div>
+        </div>
         <!--<img src="@/assets/ww.jpg" alt="" height="120px" class="navigation_image">-->
         <img src="@/assets/songshu.png" alt="" height="40px" class="navigation_image">
         <div class="navigation_text">安 。</div>
@@ -186,10 +190,29 @@
     background-color: #ffffff;
     box-shadow:0 0 2px #666 ;
   }
+  .message {
+    width: 280px;
+    height: 30px;
+    float: left;
+    /*border: 1px solid red;*/
+  }
+  .message_image {
+    /*border: 1px solid yellow;*/
+    float: left;
+  }
+  .message_text{
+    width: 240px;
+    height: 60px;
+    margin-top: 5px;
+    /*border: 1px solid green;*/
+    font-size: 14px;
+    float: left;
+  }
   .navigation_image {
-    margin-left: 140px;
+    margin-left: 0px;
     margin-top: 50px;
     float: left;
+    /*border: 1px solid yellow;*/
   }
   .navigation_text {
     width: 100px;
@@ -232,7 +255,7 @@
   }
   .blog {
     width: 800px;
-    height: 680px;
+    height: 690px;
     margin-top: 10px;
     margin-left: 8%;
     float: left;
