@@ -156,14 +156,14 @@
 //            this.$router.push("/readBlog")
             if (this.user == "user"){
               let routeData = this.$router.resolve({ path: "/readBlog",
-                query: {  blogTitle: eachResult.title, content: eachResult.content, blogTime: eachResult.time} });
+                query: {  blogId: eachResult.id} });
 //            routeData.href = "/#/readBlog"
               window.open(routeData.href, '_blank');
             }
             if (this.user == "root") {
               console.log("hello world !")
               let routeData = this.$router.resolve({ path: "/editBlog",
-                query: {  blogTitle: eachResult.title, content: eachResult.content, blogId: eachResult.id} });
+                query: {  blogId: eachResult.id} });
               window.open(routeData.href, '_blank');
             }
 

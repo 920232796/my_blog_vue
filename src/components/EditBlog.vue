@@ -85,16 +85,31 @@
             }
         },
       created (){
-          this.title = this.$route.query.blogTitle;
-          this.context = this.$route.query.content;
+//          this.title = this.$route.query.blogTitle;
+//          this.context = this.$route.query.content;
           this.blogId = this.$route.query.blogId;
-          console.log(this.blogId)
           if (this.blogId == undefined) {
             this.blogId = -1;
           }
-          console.log(this.context + this.title + this.blogId)
+        axios.get("/api/getBlog",{
+          params: {
+            id: this.blogId
+          }
+        }).then(this.handleGetBlogSucc)
       },
       methods: {
+
+        handleGetBlogSucc(res) {
+          res = res.data
+          console.log(res)
+          if (res.ret == "success"){
+            this.context = res.obj.content;
+            this.title = res.obj.title;
+            this.blogTime = res.obj.time;
+          }
+
+        },
+
         $imgAdd(pos, $file){
 //          this.imageSizeModifyDialog = true;
           // 第一步.将图片上传到服务器.

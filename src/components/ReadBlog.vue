@@ -38,13 +38,15 @@
 //      smartypants: false
 //    })
     import { mavonEditor } from 'mavon-editor'
+    import axios from "axios"
     export default {
         name: '',
         data () {
             return {
               blogContent: "",
               blogTitle: "",
-              blogTime: ""
+              blogTime: "",
+              blogId: -1
 //              articleDetail: ""
             }
         },
@@ -66,16 +68,21 @@
         },
         mounted() {
 
-
-
-
-          console.log("hello world")
-          this.blogContent = this.$route.query.content
-          this.blogTitle = this.$route.query.blogTitle
-//          this.articleDetail = this.blogContent
-          this.blogTime = this.$route.query.blogTime
-//          console.log(this.$route.query.blogTitle)
-          console.log(this.$route.query.blogTime)
+          this.blogId = this.$route.query.blogId;
+          axios.get("/api/getBlog",{
+            params: {
+              id: this.blogId
+            }
+          }).then(this.handleGetBlogSucc)
+        },
+        methods: {
+          handleGetBlogSucc(res) {
+            res = res.data
+            console.log(res)
+            this.blogContent = res.obj.content;
+            this.blogTitle = res.obj.title;
+            this.blogTime = res.obj.time;
+          }
         }
     }
 </script>
