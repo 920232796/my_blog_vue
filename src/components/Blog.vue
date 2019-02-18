@@ -39,6 +39,7 @@
           <div class="block">
             <el-pagination
               background
+              :current-page="currentPage"
               @current-change="handleCurrentChange"
               :page-size="pageSize"
               layout="prev, pager, next"
@@ -55,7 +56,15 @@
         </div>
 
 
-
+        <div class="wrapper_swiper">
+          <swiper :options="swiperOption">
+            <!-- slides -->
+            <swiper-slide v-for="item of list" :key="item.id">
+              <img class="swiper-img" :src="item.imgUrl" height="300px" width="550px"/>
+            </swiper-slide>
+            <div class="swiper-pagination"  slot="pagination"></div>
+          </swiper>
+        </div>
 
       </div>
 
@@ -69,6 +78,15 @@
         name: '',
         data () {
             return {
+              list: [{id: 1, imgUrl:require("@/assets/swiper-1.jpg")},
+                {id: 2, imgUrl: require("@/assets/swiper-2.jpg")},
+                {id: 3, imgUrl: require("@/assets/swiper-3.jpeg")},
+                {id: 4, imgUrl: require("@/assets/haokan.jpg")}],
+              swiperOption: {
+                pagination: '.swiper-pagination',
+                loop: true,
+                autoplay: true
+              },
               input: "",
               start: 0,
               limit: 5,
@@ -77,6 +95,7 @@
               pageSize: 5,
               articleClass: "python",
               keyword: null,
+              currentPage: 1,
               user: "user"
             }
         },
@@ -104,6 +123,7 @@
             this.keyword = null;
             this.limit = 5
             this.start = 0
+            this.currentPage = 1
             axios.get("/api/searchBlog", {
               params: {
                 start: this.start,
@@ -116,6 +136,7 @@
 
           handleCurrentChange	(page){
             console.log(page)
+            this.currentPage = page;
             this.start = (page-1) * this.limit
             axios.get("/api/searchBlog", {
               params: {
@@ -133,6 +154,7 @@
             this.start = 0
             if (this.input != "") {
               this.keyword = this.input
+              this.currentPage = 1
               axios.get("/api/searchBlog", {
                 params: {
                   start: this.start,
@@ -145,6 +167,7 @@
           handleSearchSucc(res) {
             res = res.data
             console.log(res)
+
             this.resultList = res.arrays
             this.totalNumber = res.total_number
           },
@@ -341,7 +364,7 @@
   .search_input_btn{
     float: left;
     width: 550px;
-    height: 130px;
+    height: 80px;
     /*border: 1px solid red;*/
     margin-left: 25px;
     margin-top: 10px;
@@ -365,4 +388,20 @@
     /*border:1px solid red;*/
     height: 60px;
   }
+
+
+
+
+  .wrapper_swiper {
+    /*border: 1px solid red;*/
+    float: left;
+    margin-left: 10px;
+    width: 550px;
+    height: 300px;
+  }
+
+
+
+
+
 </style>

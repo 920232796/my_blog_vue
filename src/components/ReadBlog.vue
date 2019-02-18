@@ -17,6 +17,7 @@
         :toolbarsFlag = "prop.toolbarsFlag"
         :editable="prop.editable"
         :scrollStyle="prop.scrollStyle"
+          :ishljs = "true"
         ></mavon-editor>
 
       </div>
