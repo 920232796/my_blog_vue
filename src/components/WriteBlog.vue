@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
 
       <div class="wrapper-user">
         <div class="username">输入文章标题:</div>
@@ -138,6 +138,7 @@
           if (res.ret == "success") {
 
             console.log("提交成功!")
+            this.submitTipDialogText = "提交成功"
             this.submitTipDialog = true;
             this.title = "";
             this.context = "";
@@ -212,7 +213,6 @@
 <style scoped>
   .logBtn {
     width: 160px;
-
     float: right;
     margin-top: 15px;
   }
@@ -225,6 +225,7 @@
     float: left;
 
     margin-top: 15px;
+
   }
 
 

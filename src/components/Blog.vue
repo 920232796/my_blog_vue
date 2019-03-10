@@ -78,7 +78,7 @@
         name: '',
         data () {
             return {
-              list: [{id: 1, imgUrl:require("@/assets/swiper-1.jpg")},
+              list: [{id: 1, imgUrl:require("@/assets/juzi.jpg")},
                 {id: 2, imgUrl: require("@/assets/swiper-2.jpg")},
                 {id: 3, imgUrl: require("@/assets/swiper-3.jpeg")},
                 {id: 4, imgUrl: require("@/assets/haokan.jpg")}],
@@ -211,7 +211,7 @@
     width: 100%;
     height: 120px;
     background-color: #ffffff;
-    box-shadow:0 0 2px #666 ;
+    box-shadow:0 0 0.5px #666 ;
   }
   .message {
     width: 280px;
@@ -277,16 +277,16 @@
     /*border: 1px solid red;*/
   }
   .blog {
-    width: 800px;
-    height: 690px;
+    width: 760px;
+    height: 700px;
     margin-top: 10px;
     margin-left: 8%;
     float: left;
-    box-shadow:0 0 2px #666 ;
+    box-shadow:0 0 0.5px #666 ;
     background-color: #ffffff;
   }
   .blog_block {
-    width: 800px;
+    width: 760px;
     height: 140px;
     border-bottom: 1px solid #D2E0E6;
     /*border: 1px solid blue;*/
@@ -316,14 +316,15 @@
     height: 110px;
     float: left;
     color: #555;
-    margin-top: 6px;
-    margin-left: 10px;
+    margin-top: 5px;
+    margin-left: 20px;
     /*border: 1px solid yellow;*/
   }
   .title {
     width: 400px;
     height: 30px;
-    font-size: 28px;
+    font-size: 22px;
+    font-weight:700;
     color: #555;
     font-family: STHeiti;
     /*font-family: Helvetica, Tahoma;*/
@@ -354,6 +355,7 @@
     width: 500px;
     height: 58px;
     /*border: 1px solid goldenrod;*/
+    margin-top: 2px;
     font-family:  "Microsoft YaHei", 微软雅黑, Heiti, 黑体;
     overflow: hidden;
     font-size: 15px;
@@ -384,7 +386,7 @@
   .block {
     float: left;
     width: 300px;
-    margin: 20px 300px ;
+    margin: 20px 270px ;
     /*border:1px solid red;*/
     height: 60px;
   }
@@ -395,7 +397,7 @@
   .wrapper_swiper {
     /*border: 1px solid red;*/
     float: left;
-    margin-left: 10px;
+    margin-left: 20px;
     width: 550px;
     height: 300px;
   }

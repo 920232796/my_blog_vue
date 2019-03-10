@@ -133,7 +133,7 @@
     height: 60px;
     font-size: 45px;
     font-weight: bold;
-    font-family: 宋体;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: 10px auto;
     /*border: 1px solid red;*/
   }
@@ -143,7 +143,7 @@
     margin: 1px auto;
     font-size: 12px;
     font-weight: 500;
-    font-family: 宋体;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
   .blog_conent {
     font-family: 宋体;
