@@ -62,10 +62,6 @@
             }
             return data
           }
-//          compiledMarkdown () {
-//            //this.articleDetail.context数据
-//            return marked(this.articleDetail, { sanitize: true })
-//          }
         },
         mounted() {
 
@@ -91,6 +87,7 @@
 <style scoped>
   .container {
     background-color: #f6f6f6;
+    /* background-color: #E0E3DA; */
     /*background-color: #2b81af;*/
     width: 100%;
     height: auto;
@@ -126,16 +123,19 @@
     height: auto;
     margin: 20px auto;
     /*border:1px solid red;*/
-    box-shadow:0 0 2px #666 ;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   }
   .title {
     width: fit-content;
     height: 60px;
-    font-size: 45px;
+    font-size: 30px;
+    color:#555555;
+    /* font-family: "宋体"; */
     font-weight: bold;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin: 10px auto;
-    /*border: 1px solid red;*/
+    font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+    margin: 5px auto;
+    /* border: 1px solid red; */
+    padding-top: 10px;
   }
   .middle{
     width: fit-content;
@@ -143,10 +143,10 @@
     margin: 1px auto;
     font-size: 12px;
     font-weight: 500;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
   }
   .blog_conent {
-    font-family: 宋体;
-
+    font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   }
 </style>

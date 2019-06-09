@@ -7,12 +7,12 @@
         </div>
         <!--<img src="@/assets/ww.jpg" alt="" height="120px" class="navigation_image">-->
         <img src="@/assets/songshu.png" alt="" height="40px" class="navigation_image">
-        <div class="navigation_text">安 。</div>
+        <div class="navigation_text">尘 埃 。</div>
         <div class="navigation_class"><span class="single_class" @click="navigation_btn_click($event)">Python</span>
           <span class="single_class" @click="navigation_btn_click($event)">Java</span>
           <span class="single_class" @click="navigation_btn_click($event)">vue</span>
           <span class="single_class" @click="navigation_btn_click($event)">深度学习</span>
-          <span class="single_class" @click="navigation_btn_click($event)">服务器</span>
+          <!-- <span class="single_class" @click="navigation_btn_click($event)">服务器</span> -->
           <span class="single_class" @click="navigation_btn_click($event)">其他</span>
           <span class="single_class" @click="navigation_btn_click($event)">关于</span>
           <!--<span class="single_class"><img src="@/assets/search.png" height="30px" alt=""></span>-->
@@ -31,7 +31,7 @@
                 <div class="time">时间: {{each_result.time}}</div>
                 <div class="read_quantity">阅读({{each_result.read_quantity}})</div>
               </div>
-              <div class="description">{{each_result.content.substring(0, 80)}}...</div>
+              <div class="description">{{each_result.content.substring(0, 65)}}...</div>
             </div>
           </div>
 
@@ -56,6 +56,15 @@
         </div>
 
 
+        <!-- <div class="hot_word">
+          <el-button v-for="item1 of hot_word_list" :key="item1.id" @click="navigation_btn_click($event)">{{item1.word}}</el-button>
+        </div> -->
+
+        <div class="hot_word">
+         <button class="hot_word_btn" v-for="item1 of hot_word_list" :key="item1.id" @click="navigation_btn_click($event)">{{item1.word}}</button>
+         <!-- <button class="hot_word_btn">Java</button> -->
+        </div>
+
         <div class="wrapper_swiper">
           <swiper :options="swiperOption">
             <!-- slides -->
@@ -66,7 +75,31 @@
           </swiper>
         </div>
 
+        <el-collapse class="collapse" v-model="activeName" accordion>
+          <el-collapse-item title="分享几首喜欢的歌~" name="1" class="collapse_item">
+            <div>余香</div>
+            <div>世间</div>
+            <div>一个人的朝圣</div>
+          </el-collapse-item>
+          <el-collapse-item title="分享几本喜欢的书~" name="2" class="collapse_item">
+            <div>基地</div>
+            <div>基督山伯爵</div>
+            <div>永恒的终结</div>
+            <div>许三观卖血记</div>
+          </el-collapse-item>
+          <el-collapse-item title="喜欢胜过所有道理~" name="3" class="collapse_item">
+            <div>本科山东师范大学，研究生去向未知~，好喜欢山师阿</div>
+            <div>喜欢周围的人~</div>
+            <div>热爱生活~</div>
+          </el-collapse-item>
+          <el-collapse-item title="感恩" name="4" class="collapse_item">
+            <div>希望可以一直坚持走下去~</div>
+          </el-collapse-item>
+        </el-collapse>
+
       </div>
+
+    
 
 
     </div>
@@ -79,9 +112,13 @@
         data () {
             return {
               list: [{id: 1, imgUrl:require("@/assets/juzi.jpg")},
-                {id: 2, imgUrl: require("@/assets/swiper-2.jpg")},
-                {id: 3, imgUrl: require("@/assets/swiper-3.jpeg")},
-                {id: 4, imgUrl: require("@/assets/haokan.jpg")}],
+                {id: 2, imgUrl: require("@/assets/deng.jpg")},
+                // {id: 3, imgUrl: require("@/assets/swiper-3.jpeg")},
+                {id: 4, imgUrl: require("@/assets/haokan.jpg")},
+                {id: 5, imgUrl: require("@/assets/x.jpg")},
+                // {id: 6, imgUrl: require("@/assets/shenzhen.jpg")}
+                
+                ],
               swiperOption: {
                 pagination: '.swiper-pagination',
                 loop: true,
@@ -96,7 +133,17 @@
               articleClass: "python",
               keyword: null,
               currentPage: 1,
-              user: "user"
+              user: "user",
+              hot_word_list: [
+              {id: 1, word: "cs231n"},
+              {id: 2, word: "vscode"}, 
+              {id: 3, word: "flask"}, 
+              {id: 4, word: "spring boot"}, 
+              {id: 5, word: "pandas"},
+              {id: 6, word: "go"},
+              {id: 7, word: "leetcode"},
+              {id: 8, word: "算法"}
+              ]
             }
         },
         mounted() {
@@ -115,12 +162,15 @@
 
         },
         methods: {
+          testClick() {
+            console.log("hello world;")
+          },
           navigation_btn_click(e) {
             console.log(e.target.innerHTML)
             this.articleClass = e.target.innerHTML;
             //这里很关键 因为分为两种search keyword 跟 class
             //只要点击了某个class 就证明是class search了 所以keyword 要弄成null 传到后台就不会根据keyword进行search了
-            this.keyword = null;
+            this.keyword = this.articleClass;
             this.limit = 5
             this.start = 0
             this.currentPage = 1
@@ -128,6 +178,7 @@
               params: {
                 start: this.start,
                 limit: this.limit,
+                keyword: this.keyword,
                 article_class: this.articleClass
               }
             }).then(this.handleSearchSucc)
@@ -167,11 +218,11 @@
           handleSearchSucc(res) {
             res = res.data
             console.log(res)
-
             this.resultList = res.arrays
             this.totalNumber = res.total_number
+            this.$message('操作成功');
           },
-
+       
           handleContentClick(eachResult) {
 //            console.log(content)
 //            var tempwindow=window.open('_blank');
@@ -211,7 +262,8 @@
     width: 100%;
     height: 120px;
     background-color: #ffffff;
-    box-shadow:0 0 0.5px #666 ;
+    /* box-shadow:0 0 0.5px #666 ; */
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   }
   .message {
     width: 280px;
@@ -252,13 +304,13 @@
     /*border:1px solid red;*/
   }
   .navigation_class {
-    width: 650px;
+    width: 600px;
     height: 40px;
     /*border:1px solid red;*/
     float: right;
     margin-top: 50px;
     font-size: 21px;
-    margin-right: 60px;
+    margin-right: 20px;
   }
   .single_class {
     width: 60px;
@@ -282,7 +334,8 @@
     margin-top: 10px;
     margin-left: 8%;
     float: left;
-    box-shadow:0 0 0.5px #666 ;
+    /* box-shadow:0 0 0.5px #666 ; */
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
   }
   .blog_block {
@@ -327,7 +380,7 @@
     font-weight:700;
     color: #555;
     font-family: STHeiti;
-    /*font-family: Helvetica, Tahoma;*/
+    font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
     /*border: 1px solid red;*/
   }
   .title:hover {
@@ -338,7 +391,8 @@
     height: 20px;
     font-size: 13px;
     margin-top: 5px;
-    font-family:  "Microsoft YaHei", 微软雅黑, Heiti, 黑体;
+    /* font-family:  "Microsoft YaHei", 微软雅黑, Heiti, 黑体; */
+     font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
     /*border: 1px solid greenyellow;*/
   }
   .time {
@@ -356,7 +410,7 @@
     height: 58px;
     /*border: 1px solid goldenrod;*/
     margin-top: 2px;
-    font-family:  "Microsoft YaHei", 微软雅黑, Heiti, 黑体;
+    font-family:  lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
     overflow: hidden;
     font-size: 15px;
   }
@@ -366,7 +420,7 @@
   .search_input_btn{
     float: left;
     width: 550px;
-    height: 80px;
+    height: 60px;
     /*border: 1px solid red;*/
     margin-left: 25px;
     margin-top: 10px;
@@ -375,12 +429,14 @@
     float: left;
     width: 120px;
     height: 40px;
+    margin-left: 10px;
     /*border: 1px solid black;*/
   }
   .search_input {
     float: left;
     width: 400px;
-    height: 115px;
+    height: 40px;
+    /* border:1px solid red; */
   }
 
   .block {
@@ -392,18 +448,64 @@
   }
 
 
+  .hot_word {
+    width: 500px;
+    margin-left: 20px;
+    /* border: 1px solid red; */
+    float: left;
+  }
 
+  .hot_word_btn {
+    /* border: 1px solid rgba(0, 0, 0, .20); */
+    border: 1px solid #dcdfe6;
+    border-radius: 4px;
+    background-color: #ffffff;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04); */
+    margin-left: 10px;
+    margin-top: 10px;
+    /* width: 86px; */
+    padding: 12px 20px;
+    /* height: 40px; */
+    line-height: 1;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #606266;
+    outline:none;
+  }
+  .hot_word_btn:hover{
+    color: #428bca;
+    background-color: #ecf5ff;
+  }
+  .hot_word_btn:visited{
+    background-color: #ecf5ff;
+  }
 
   .wrapper_swiper {
-    /*border: 1px solid red;*/
+    /* border: 1px solid red; */
     float: left;
     margin-left: 20px;
     width: 550px;
     height: 300px;
+    margin-top: 20px;
   }
 
+  .collapse {
+    /* border: 1px solid red; */
+    /* background-color: #D2E0E6; */
+    background-color: #ffffff;
+    float:left;
+    width: 540px;
+    margin-left: 20px;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left:10px;
+  }
 
-
-
+  .collapse_item {
+    margin-left: 5px;
+    text-align: center;
+  }
 
 </style>
