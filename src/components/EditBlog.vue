@@ -194,7 +194,7 @@
 
 
   .wrapper-user {
-    /*border: 1px solid blue;*/
+    /* border: 1px solid blue; */
     width: 350px;
     height: 80px;
     margin: 0 auto;

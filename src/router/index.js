@@ -12,12 +12,7 @@ Vue.use(Router)
 const router =  new Router({
   routes: [
     {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
-    {
-      path: "/blog",
+      path: "/",
       name: "Blog",
       component: Blog
     },
@@ -45,7 +40,7 @@ const router =  new Router({
 })
 
 router.beforeEach((to,from,next)=>{
-  if(to.path=="/login" | to.path == "/blog" | to.path == "/readBlog"){
+  if(to.path=="/login" | to.path == "/" | to.path == "/readBlog"){
     next();
   }else{
     if(sessionStorage.user){

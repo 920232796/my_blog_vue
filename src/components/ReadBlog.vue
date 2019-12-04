@@ -17,6 +17,8 @@
         :toolbarsFlag = "prop.toolbarsFlag"
         :editable="prop.editable"
         :scrollStyle="prop.scrollStyle"
+        :previewBackground="prop.previewBackground"
+        :boxShadow="prop.boxShadow"
           :ishljs = "true"
         ></mavon-editor>
 
@@ -58,7 +60,9 @@
               defaultOpen: 'preview',//edit： 默认展示编辑区域 ， preview： 默认展示预览区域
               editable: false,
               toolbarsFlag: false,
-              scrollStyle: true
+              scrollStyle: true,
+              previewBackground: "#ffffff",
+              boxShadow: false
             }
             return data
           }
@@ -86,7 +90,7 @@
 
 <style scoped>
   .container {
-    background-color: #f6f6f6;
+    /* background-color: #f6f6f6; */
     /* background-color: #E0E3DA; */
     /*background-color: #2b81af;*/
     width: 100%;
@@ -96,7 +100,7 @@
   .wrapper {
     width: 100%;
     height: auto;
-    border: 1px solid #f6f6f6;
+    /* border: 1px solid #f6f6f6; */
   }
 
   .message {
@@ -118,18 +122,18 @@
     float: left;
   }
   .content{
-    background-color: #ffffff;
-    width: 800px;
+    /* background-color: #ffffff; */
+    width: 1200px;
     height: auto;
     margin: 20px auto;
     /*border:1px solid red;*/
-    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); */
   }
   .title {
     width: fit-content;
     height: 60px;
     font-size: 30px;
-    color:#555555;
+    /* color:#555555; */
     /* font-family: "宋体"; */
     font-weight: bold;
     font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
@@ -142,11 +146,17 @@
     height: 30px;
     margin: 1px auto;
     font-size: 12px;
+    /* border: 1px solid red; */
     font-weight: 500;
     font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
   }
-  .blog_conent {
-    font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
-    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  .content {
+    /* font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif; */
+    /* box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); */
+    background-color: white;
+  }
+  .md {
+    width: 1000px;
+    margin: 0 auto;
   }
 </style>

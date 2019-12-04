@@ -8,21 +8,15 @@
         <!--<img src="@/assets/ww.jpg" alt="" height="120px" class="navigation_image">-->
         <img src="@/assets/songshu.png" alt="" height="40px" class="navigation_image">
         <div class="navigation_text">尘 埃 。</div>
-        <div class="navigation_class"><span class="single_class" @click="navigation_btn_click($event)">Python</span>
-          <span class="single_class" @click="navigation_btn_click($event)">Java</span>
-          <span class="single_class" @click="navigation_btn_click($event)">vue</span>
-          <span class="single_class" @click="navigation_btn_click($event)">深度学习</span>
-          <!-- <span class="single_class" @click="navigation_btn_click($event)">服务器</span> -->
-          <span class="single_class" @click="navigation_btn_click($event)">其他</span>
-          <span class="single_class" @click="navigation_btn_click($event)">关于</span>
-          <!--<span class="single_class"><img src="@/assets/search.png" height="30px" alt=""></span>-->
+        <div class="navigation_class">
+  
         </div>
       </div>
       <div class="content">
         <div class="blog">
           <div class="blog_block" v-for="each_result of resultList" :key="each_result.id" @click="handleContentClick(each_result)">
             <div class="image_wrapper">
-              <img :src="each_result.image" alt="暂无"  class="blog_image" align="middle">
+              <img :src="each_result.image" alt="暂无"  class="blog_image" align="middle" height="110" width="200">
             </div>
             <div class="text_content">
               <div class="title">
@@ -131,7 +125,7 @@
               totalNumber: 0,
               pageSize: 5,
               articleClass: "python",
-              keyword: null,
+              keyword: "python",
               currentPage: 1,
               user: "user",
               hot_word_list: [
@@ -142,7 +136,8 @@
               {id: 5, word: "pandas"},
               {id: 6, word: "go"},
               {id: 7, word: "leetcode"},
-              {id: 8, word: "算法"}
+              {id: 8, word: "算法"},
+              {id: 9, word: "rnn"}
               ]
             }
         },
@@ -156,7 +151,7 @@
               params: {
                 start: this.start,
                 limit: this.limit,
-                article_class: this.articleClass
+                keyword: this.keyword
               }
             }).then(this.handleSearchSucc)
 
@@ -179,7 +174,6 @@
                 start: this.start,
                 limit: this.limit,
                 keyword: this.keyword,
-                article_class: this.articleClass
               }
             }).then(this.handleSearchSucc)
 
@@ -194,7 +188,6 @@
                 start: this.start,
                 limit: this.limit,
                 keyword: this.keyword,
-                article_class:this.articleClass
               }
             }).then(this.handleSearchSucc)
           },
@@ -242,9 +235,6 @@
             }
 
           }
-
-
-
 
 
         }
@@ -370,11 +360,11 @@
     float: left;
     color: #555;
     margin-top: 5px;
-    margin-left: 20px;
-    /*border: 1px solid yellow;*/
+    margin-left: 100px;
+    /* border: 1px solid yellow; */
   }
   .title {
-    width: 400px;
+    width: 500px;
     height: 30px;
     font-size: 22px;
     font-weight:700;
@@ -387,7 +377,7 @@
     color: #428bca;
   }
   .middle {
-    width: 400px;
+    width: 300px;
     height: 20px;
     font-size: 13px;
     margin-top: 5px;
