@@ -74,6 +74,7 @@
             <div>余香</div>
             <div>世间</div>
             <div>一个人的朝圣</div>
+            <div>桥边姑娘</div>
           </el-collapse-item>
           <el-collapse-item title="分享几本喜欢的书~" name="2" class="collapse_item">
             <div>基地</div>
@@ -82,12 +83,8 @@
             <div>许三观卖血记</div>
           </el-collapse-item>
           <el-collapse-item title="喜欢胜过所有道理~" name="3" class="collapse_item">
-            <div>本科山东师范大学，研究生去向未知~，好喜欢山师阿</div>
             <div>喜欢周围的人~</div>
             <div>热爱生活~</div>
-          </el-collapse-item>
-          <el-collapse-item title="感恩" name="4" class="collapse_item">
-            <div>希望可以一直坚持走下去~</div>
           </el-collapse-item>
         </el-collapse>
 
@@ -137,7 +134,10 @@
               {id: 6, word: "go"},
               {id: 7, word: "leetcode"},
               {id: 8, word: "算法"},
-              {id: 9, word: "rnn"}
+              {id: 9, word: "rnn"},
+              {id: 10, word: "c++"},
+              {id: 11, word: "java"},
+              {id: 12, word: "python"},
               ]
             }
         },
@@ -433,7 +433,7 @@
     float: left;
     width: 300px;
     margin: 20px 270px ;
-    /*border:1px solid red;*/
+    /* border:1px solid red; */
     height: 60px;
   }
 
@@ -454,7 +454,7 @@
     margin-left: 10px;
     margin-top: 10px;
     /* width: 86px; */
-    padding: 12px 20px;
+    padding: 12px 15px;
     /* height: 40px; */
     line-height: 1;
     text-align: center;
