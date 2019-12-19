@@ -128,9 +128,7 @@
               hot_word_list: [
               {id: 1, word: "cs231n"},
               {id: 2, word: "vscode"}, 
-              {id: 3, word: "flask"}, 
-              {id: 4, word: "spring boot"}, 
-              {id: 5, word: "pandas"},
+              {id: 5, word: "vue"},
               {id: 6, word: "go"},
               {id: 7, word: "leetcode"},
               {id: 8, word: "算法"},
