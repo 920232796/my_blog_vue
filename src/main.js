@@ -11,7 +11,9 @@ import 'mavon-editor/dist/css/index.css'
 
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
+import VueParticles from 'vue-particles'//粒子效果的包
 
+Vue.use(VueParticles)  
 Vue.use(mavonEditor)
 Vue.use(ElementUI)
 Vue.use(VueAwesomeSwiper)

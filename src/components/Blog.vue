@@ -1,5 +1,11 @@
 <template>
     <div class="container">
+     
+        <vue-particles color="#899DE8" :particleOpacity="0.7" :particlesNumber="60" shapeType="circle" 
+               :particleSize="4" linesColor="#899DE8" :linesWidth="1" :lineLinked="true" 
+               :lineOpacity="0.4" :linesDistance="150" :moveSpeed="2" :hoverEffect="true" 
+               hoverMode="grab" :clickEffect="true" clickMode="push" class="lizi"> </vue-particles>
+    
       <div class="navigation">
         <div class="message">
           <img src="@/assets/message.png" alt="" class="message_image" width="30px" height="30px">
@@ -121,8 +127,8 @@
               resultList: [],
               totalNumber: 0,
               pageSize: 5,
-              articleClass: "python",
-              keyword: "python",
+              articleClass: "本篇",
+              keyword: "本篇",
               currentPage: 1,
               user: "user",
               hot_word_list: [
@@ -240,6 +246,13 @@
 </script>
 
 <style scoped>
+  .lizi {
+    position: absolute;
+    width: 1600px;
+    /* border: 1px solid red; */
+    height: 120px;
+    z-index: 1;
+  }
   .container{
     width: 100%;
     height: 100%;
@@ -313,8 +326,9 @@
     height: 800px;
     width: 100%;
     margin-top: 5px;
+    z-index: -1;
     /*float: left;*/
-    /*border: 1px solid red;*/
+    /* border: 1px solid red; */
   }
   .blog {
     width: 760px;
