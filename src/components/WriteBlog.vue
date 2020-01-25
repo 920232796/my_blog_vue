@@ -7,7 +7,6 @@
           <el-input v-model="title" placeholder="请输入内容" size="medium"></el-input>
         </div>
       </div>
-
       <mavon-editor
         :ishljs = "true"
         ref="md"

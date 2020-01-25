@@ -60,10 +60,14 @@
           <el-button v-for="item1 of hot_word_list" :key="item1.id" @click="navigation_btn_click($event)">{{item1.word}}</el-button>
         </div> -->
 
-        <div class="hot_word">
+        <!-- <div class="hot_word">
          <button class="hot_word_btn" v-for="item1 of hot_word_list" :key="item1.id" @click="navigation_btn_click($event)">{{item1.word}}</button>
-         <!-- <button class="hot_word_btn">Java</button> -->
+        </div> -->
+        <div class=hot_word>
+          <div class="hot_word_title">搜索热词: </div>
+          <div id="tagCloud" class="tag_cloud"> </div>
         </div>
+        
 
         <div class="wrapper_swiper">
           <swiper :options="swiperOption">
@@ -104,6 +108,7 @@
 
 <script>
     import axios from "axios"
+    const TagCloud = require('TagCloud');
     export default {
         name: '',
         data () {
@@ -142,10 +147,16 @@
               {id: 10, word: "c++"},
               {id: 11, word: "java"},
               {id: 12, word: "python"},
-              ]
+              ], 
+              tagList: ["cs231n", "vscode", "vue", "go", "leetcode", "算法", "rnn", "c++", "java", "python", "rust", "attention", "socket", "pytorch", "word2vec"],
+              
             }
         },
         mounted() {
+            //标签云
+            let container = document.getElementById('tagCloud')
+            TagCloud(container, this.tagList);
+
             if (sessionStorage.user){
               this.user = "root";
             }
@@ -452,9 +463,25 @@
 
   .hot_word {
     width: 500px;
-    margin-left: 20px;
+    margin-left: 30px;
     /* border: 1px solid red; */
     float: left;
+  }
+  .hot_word_title {
+    width: 100px;
+    height: 50px;
+    /* border: 1px solid red; */
+    margin-top: 60px;
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+    font-family:  lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+  }
+  .tag_cloud {
+    width: 200px;
+    height: 200px;
+    float: left;
+    margin-left: 50px;
   }
 
   .hot_word_btn {
