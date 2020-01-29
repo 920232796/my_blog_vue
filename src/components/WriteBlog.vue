@@ -151,8 +151,6 @@
           this.$message('文章标题或内容不能为空！' + this.getCurrentTime());
         },
 
-
-
         handleFileSucc (response, file, fileList) {// 上传成功后返回这个函数 这个可以写个dialog 对话框 让别人知道已经导入成功！！
           console.log(response);
           console.log(file);
