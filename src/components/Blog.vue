@@ -33,6 +33,7 @@
               </div>
               <div class="description">{{each_result.content.substring(0, 65)}}...</div>
             </div>
+
           </div>
 
 
@@ -66,6 +67,47 @@
         <div class=hot_word>
           <div class="hot_word_title">搜索热词: </div>
           <div id="tagCloud" class="tag_cloud"> </div>
+        </div>
+
+        <!-- <div class="deeplearning">
+          
+        </div> -->
+
+        <el-drawer
+          title="热门文章"
+          style=""
+          :visible.sync="drawer"
+          :direction="direction"
+          :before-close="handleDrawerClose"
+        >
+          <div class="infinite-list" v-infinite-scroll="loadHot" style="overflow:auto; height: 800px; ">
+            <div id="infinite_list" v-for="hotResult of hotResultList" :key="hotResult.id" class="infinite-list-item" @click="handleContentClick(hotResult)">
+              
+              <div class="hot_image_wrapper">
+                <img :src="hotResult.image" alt="暂无"  class="blog_image" align="middle" height="70" width="130">
+              </div>
+              <div class="hot_text_content">
+                <div class="hot_title">
+                {{hotResult.title}}</div>
+                <div class="hot_middle">
+                  <div class="hot_time">时间: {{hotResult.time}}</div>
+                  <div class="hot_read_quantity">阅读({{hotResult.read_quantity}})</div>
+                </div>
+                <div class="hot_description">{{hotResult.content.substring(0, 10)}}...</div>
+              </div>
+
+            </div>
+          </div>
+        </el-drawer>
+
+        <div class="deeplearning">
+          <el-button @click="handleDrawer" type="primary" class="hot_article">
+          热门文章
+          </el-button>
+
+          <el-button @click="handleDeepLearning" type="primary" class="deep_btn">
+          深度学习模型测试
+          </el-button>
         </div>
         
 
@@ -113,6 +155,10 @@
         name: '',
         data () {
             return {
+              hotResultList: [],
+              index: 0,//热门文章下滑的时候 index会增加 然后请求新数据
+              drawer: false,
+              direction: 'rtl',
               list: [{id: 1, imgUrl:require("@/assets/juzi.jpg")},
                 {id: 2, imgUrl: require("@/assets/deng.jpg")},
                 // {id: 3, imgUrl: require("@/assets/swiper-3.jpeg")},
@@ -129,6 +175,7 @@
               input: "",
               start: 0,
               limit: 5,
+              hot_limit: 8,
               resultList: [],
               totalNumber: 0,
               pageSize: 5,
@@ -172,6 +219,46 @@
 
         },
         methods: {
+          // handleDrawerClose(done) {
+          //   this.index = 0;
+          //   this.hotResultList = [];
+          //   done()
+          // },
+          handleDeepLearning() {
+            // 跳转到深度学习测试平台url
+            this.$router.push("/deeplearning")
+          },
+          loadHot() {
+            console.log("hello world haha ")
+            this.index += this.hot_limit;
+            axios.get("/api/searchHotBlog", {
+              params: {
+                start: this.index,
+                limit: this.hot_limit,
+              }
+            }).then(this.handleSearchHotBlogSucc)
+          },
+          handleDrawer() {
+            this.drawer = true;
+            this.index = 0;//每次刚点开热门文章按钮，就会重新从最热门文章开始请求数据
+            this.hotResultList = []
+            axios.get("/api/searchHotBlog", {
+              params: {
+                start: this.index,
+                limit: this.hot_limit,
+              }
+            }).then(this.handleSearchHotBlogSucc)
+            
+          },
+          handleSearchHotBlogSucc(res) {
+            res = res.data;
+            console.log(res)
+            var listTemp = res.arrays;
+            for (var i = 0; i < listTemp.length; i ++) {
+              this.hotResultList.push(listTemp[i]);
+            }
+            
+          },
           testClick() {
             console.log("hello world;")
           },
@@ -315,14 +402,25 @@
     color: #666;
     /*border:1px solid red;*/
   }
-  .navigation_class {
-    width: 600px;
-    height: 40px;
-    /*border:1px solid red;*/
-    float: right;
-    margin-top: 50px;
-    font-size: 21px;
-    margin-right: 20px;
+  .hot_article {
+    margin-left: 35px;
+    margin-top: 10px;
+    width: 120px;
+  }
+  .deep_btn {
+    margin-left: 20px;
+    margin-top: 40px;
+  }
+  .deeplearning {
+    width: 200px;
+    height: 150px;
+    /* border:1px solid red; */
+    border-left: 2px solid #D2E0E6;
+    font-family: "Microsoft YaHei UI";
+    float: left;
+    margin-top: 20px;
+    font-size: 18px;
+    margin-left: 20px;
   }
   .single_class {
     width: 60px;
@@ -355,38 +453,62 @@
     width: 760px;
     height: 140px;
     border-bottom: 1px solid #D2E0E6;
-    /*border: 1px solid blue;*/
+    /* border: 1px solid blue; */
     float: left;
   }
   .blog_block:hover {
     background-color: #eaeaea;
   }
+  
   .image_wrapper{
-    width: 120px;
-    height: 140px;
+    width: 160px;
+    height: 120px;
     float: left;
-    /*border: 1px solid red;*/
+    /* border: 1px solid red; */
     text-align: center;
+  }
+  .hot_image_wrapper{
+    width: 150px;
+    height: 110px;
+    float: left;
+    /* border: 1px solid red; */
+    text-align: center;
+  }
+  .hot_image_wrapper:hover {
+    background-color: #eaeaea;
   }
   .blog_image {
     margin: 10px 10px;
     /*border:1px solid green;*/
     /*padding: 0 auto;*/
-
-    /*border: 1px solid red;*/
+    /* border: 1px solid red; */
     float: left;
   }
   .text_content {
     float: left;
-    width: 520px ;
+    width: 320px ;
     height: 110px;
     float: left;
     color: #555;
     margin-top: 5px;
-    margin-left: 100px;
+    margin-left: 70px;
     /* border: 1px solid yellow; */
   }
+  .hot_text_content {
+    float: left;
+    width: 250px;
+    height: 110px;
+    margin-left: 10px;
+    margin-top: 3px;
+    font-size: 13px;
+    /* border: 1px solid red; */
+
+  }
+  .hot_text_content:hover {
+    background-color: #eaeaea;
+  }
   .title {
+    float: left;
     width: 500px;
     height: 30px;
     font-size: 22px;
@@ -394,9 +516,16 @@
     color: #555;
     font-family: STHeiti;
     font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
-    /*border: 1px solid red;*/
+    /* border: 1px solid red; */
   }
   .title:hover {
+    color: #428bca;
+  }
+  .hot_title {
+     margin-left: 5px;
+     margin-top: 10px;
+  }
+  .hot_title:hover {
     color: #428bca;
   }
   .middle {
@@ -408,10 +537,24 @@
      font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
     /*border: 1px solid greenyellow;*/
   }
+  .hot_time {
+    width: 150px;
+    height: 15px;
+    font-size: 13px;
+    float: left;
+    margin-left: 5px;
+  }
   .time {
     width: 200px;
     height: 20px;
     float: left;
+  }
+  .hot_read_quantity {
+    width: 200px;
+    height: 20px;
+    float: left;
+    font-size: 13px;
+    margin-left: 5px;
   }
   .read_quantity{
     width: 200px;
@@ -427,8 +570,16 @@
     overflow: hidden;
     font-size: 15px;
   }
-
-
+  .hot_description {
+    width: 200px;
+    height: 38px;
+    /* border: 1px solid goldenrod; */
+    margin-top: 2px;
+    font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+    overflow: hidden;
+    font-size: 13px;
+    margin-left: 5px;
+  }
 
   .search_input_btn{
     float: left;
@@ -460,9 +611,8 @@
     height: 60px;
   }
 
-
   .hot_word {
-    width: 500px;
+    width: 350px;
     margin-left: 30px;
     /* border: 1px solid red; */
     float: left;

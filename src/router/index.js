@@ -6,6 +6,7 @@ import ReadBlog from "@/components/ReadBlog"
 import LogIn from "@/components/LogIn"
 import WriteBlog from "@/components/WriteBlog"
 import EditBlog from "@/components/EditBlog"
+import Deeplearning from "@/components/Deeplearning"
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ const router =  new Router({
       path: "/editBlog",
       name: "EditBlog",
       component: EditBlog
+    }, 
+    {
+      path: "/deeplearning",
+      name: "Deeplearning", 
+      component: Deeplearning
     }
   ]
 })
