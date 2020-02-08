@@ -7,7 +7,7 @@ import LogIn from "@/components/LogIn"
 import WriteBlog from "@/components/WriteBlog"
 import EditBlog from "@/components/EditBlog"
 import Deeplearning from "@/components/Deeplearning"
-
+import Chatbot from "@/components/Chatbot"
 Vue.use(Router)
 
 const router =  new Router({
@@ -40,13 +40,23 @@ const router =  new Router({
     {
       path: "/deeplearning",
       name: "Deeplearning", 
-      component: Deeplearning
+      component: Deeplearning,
+      children:[
+        {
+          path: "/deeplearning/chatbot",
+          component: Chatbot
+        },
+        {
+          path: "/deeplearning/other",
+          component: Chatbot
+        },
+      ]
     }
   ]
 })
 
 router.beforeEach((to,from,next)=>{
-  if(to.path=="/login" | to.path == "/" | to.path == "/readBlog"){
+  if(to.path=="/login" | to.path == "/" | to.path == "/readBlog" | to.path == "/deeplearning" | to.path=="/deeplearning/chatbot"){
     next();
   }else{
     if(sessionStorage.user){

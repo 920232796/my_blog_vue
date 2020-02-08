@@ -8,7 +8,7 @@
     
       <div class="navigation">
         <div class="message">
-          <img src="@/assets/message.png" alt="" class="message_image" width="30px" height="30px">
+          <img src="../assets/message.png" alt="" class="message_image" width="30px" height="30px">
           <div class="message_text">不可评论,问题咨询请加QQ:920232796</div>
         </div>
         <!--<img src="@/assets/ww.jpg" alt="" height="120px" class="navigation_image">-->
@@ -84,7 +84,7 @@
             <div id="infinite_list" v-for="hotResult of hotResultList" :key="hotResult.id" class="infinite-list-item" @click="handleContentClick(hotResult)">
               
               <div class="hot_image_wrapper">
-                <img :src="hotResult.image" alt="暂无"  class="blog_image" align="middle" height="70" width="130">
+                <img :src="hotResult.image" alt="暂无"  class="blog_image" align="middle" height="90" width="150">
               </div>
               <div class="hot_text_content">
                 <div class="hot_title">
@@ -204,11 +204,12 @@
             let container = document.getElementById('tagCloud')
             TagCloud(container, this.tagList);
 
-            if (sessionStorage.user){
+            if (sessionStorage.user == "root"){
               this.user = "root";
+            } else {
+              this.user = "user";
             }
             this.start = 0;
-            console.log("hello world")
             axios.get("/api/searchBlog", {
               params: {
                 start: this.start,
@@ -216,14 +217,13 @@
                 keyword: this.keyword
               }
             }).then(this.handleSearchSucc)
-
         },
         methods: {
-          // handleDrawerClose(done) {
-          //   this.index = 0;
-          //   this.hotResultList = [];
-          //   done()
-          // },
+          handleDrawerClose(done) {
+            this.index = 0;
+            this.hotResultList = [];
+            done()
+          },
           handleDeepLearning() {
             // 跳转到深度学习测试平台url
             this.$router.push("/deeplearning")
@@ -468,7 +468,7 @@
     text-align: center;
   }
   .hot_image_wrapper{
-    width: 150px;
+    width: 170px;
     height: 110px;
     float: left;
     /* border: 1px solid red; */
@@ -496,9 +496,9 @@
   }
   .hot_text_content {
     float: left;
-    width: 250px;
+    width: 280px;
     height: 110px;
-    margin-left: 10px;
+    margin-left: 15px;
     margin-top: 3px;
     font-size: 13px;
     /* border: 1px solid red; */
@@ -555,6 +555,7 @@
     float: left;
     font-size: 13px;
     margin-left: 5px;
+    margin-top: 5px;
   }
   .read_quantity{
     width: 200px;

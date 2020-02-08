@@ -35,17 +35,17 @@
             }
         },
       created(){
-        if(sessionStorage.user){ //登陆了自动跳到首页，来阻止重复登陆
+        if(sessionStorage.user == "root"){ //登陆了自动跳到首页，来阻止重复登陆
           this.$router.push("/writeBlog")
         }
       },
       destroyed: function () {
-          sessionStorage.user = null
+          sessionStorage.user = "user"
       },
         methods: {
           handleLogClick () {
             if (this.inputPassword == "xzh980302") {
-              sessionStorage.user = this.inputPassword
+              sessionStorage.user = "root"
              this.$router.push("/writeBlog")
             }
           }
