@@ -84,7 +84,7 @@
             <div id="infinite_list" v-for="hotResult of hotResultList" :key="hotResult.id" class="infinite-list-item" @click="handleContentClick(hotResult)">
               
               <div class="hot_image_wrapper">
-                <img :src="hotResult.image" alt="暂无"  class="blog_image" align="middle" height="90" width="150">
+                <img :src="hotResult.image" alt="暂无"  class="blog_image" align="middle" height="130" width="200">
               </div>
               <div class="hot_text_content">
                 <div class="hot_title">
@@ -93,7 +93,7 @@
                   <div class="hot_time">时间: {{hotResult.time}}</div>
                   <div class="hot_read_quantity">阅读({{hotResult.read_quantity}})</div>
                 </div>
-                <div class="hot_description">{{hotResult.content.substring(0, 10)}}...</div>
+                <!-- <div class="hot_description">{{hotResult.content.substring(0, 10)}}...</div> -->
               </div>
 
             </div>
@@ -467,10 +467,11 @@
     text-align: center;
   }
   .hot_image_wrapper{
-    width: 170px;
-    height: 110px;
+    width: 220px;
+    height: 150px;
     float: left;
     /* border: 1px solid red; */
+    border-right: 1.5px solid #eaeaea;
     text-align: center;
   }
   .hot_image_wrapper:hover {
@@ -495,8 +496,8 @@
   }
   .hot_text_content {
     float: left;
-    width: 280px;
-    height: 110px;
+    width: 210px;
+    height: 150px;
     margin-left: 15px;
     margin-top: 3px;
     font-size: 13px;
@@ -523,6 +524,8 @@
   .hot_title {
      margin-left: 5px;
      margin-top: 10px;
+     font-size: 15px;
+     margin-bottom: 10px;
   }
   .hot_title:hover {
     color: #428bca;
@@ -554,7 +557,7 @@
     float: left;
     font-size: 13px;
     margin-left: 5px;
-    margin-top: 5px;
+    margin-top: 10px;
   }
   .read_quantity{
     width: 200px;
