@@ -217,11 +217,18 @@
                 keyword: this.keyword
               }
             }).then(this.handleSearchSucc)
+            //加载热门文章
+            this.index = 0;//每次刚点开热门文章按钮，就会重新从最热门文章开始请求数据
+            this.hotResultList = []
+            axios.get("/api/searchHotBlog", {
+              params: {
+                start: this.index,
+                limit: this.hot_limit,
+              }
+            }).then(this.handleSearchHotBlogSucc)
         },
         methods: {
           handleDrawerClose(done) {
-            this.index = 0;
-            this.hotResultList = [];
             done()
           },
           handleDeepLearning() {
@@ -240,14 +247,6 @@
           },
           handleDrawer() {
             this.drawer = true;
-            this.index = 0;//每次刚点开热门文章按钮，就会重新从最热门文章开始请求数据
-            this.hotResultList = []
-            axios.get("/api/searchHotBlog", {
-              params: {
-                start: this.index,
-                limit: this.hot_limit,
-              }
-            }).then(this.handleSearchHotBlogSucc)
             
           },
           handleSearchHotBlogSucc(res) {
