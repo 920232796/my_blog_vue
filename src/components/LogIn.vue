@@ -39,9 +39,9 @@
           this.$router.push("/writeBlog")
         }
       },
-      destroyed: function () {
-          sessionStorage.user = "user"
-      },
+    //   destroyed: function () {
+    //       sessionStorage.user = "user"
+    //   },
         methods: {
           handleLogClick () {
             if (this.inputPassword == "xzh980302") {

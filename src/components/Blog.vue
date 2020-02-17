@@ -199,24 +199,29 @@
               
             }
         },
+        created() {
+          if (sessionStorage.user == "root"){
+            this.user = "root";
+          } else {
+            this.user = "user";
+          }
+          console.log(this.user)
+          this.start = 0;
+          axios.get("/api/searchBlog", {
+            params: {
+              start: this.start,
+              limit: this.limit,
+              keyword: this.keyword
+            }
+          }).then(this.handleSearchSucc)
+            
+        },
         mounted() {
             //标签云
             let container = document.getElementById('tagCloud')
             TagCloud(container, this.tagList);
-
-            if (sessionStorage.user == "root"){
-              this.user = "root";
-            } else {
-              this.user = "user";
-            }
-            this.start = 0;
-            axios.get("/api/searchBlog", {
-              params: {
-                start: this.start,
-                limit: this.limit,
-                keyword: this.keyword
-              }
-            }).then(this.handleSearchSucc)
+            console.log(this.user)
+            console.log("hahah is mounted!")
             //加载热门文章
             this.index = 0;//每次刚点开热门文章按钮，就会重新从最热门文章开始请求数据
             this.hotResultList = []

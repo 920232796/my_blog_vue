@@ -59,7 +59,7 @@ router.beforeEach((to,from,next)=>{
   if(to.path=="/login" | to.path == "/" | to.path == "/readBlog" | to.path == "/deeplearning" | to.path=="/deeplearning/chatbot"){
     next();
   }else{
-    if(sessionStorage.user){
+    if(sessionStorage.user == "root"){
       next()
     }else{
       next({path:"/login"})
