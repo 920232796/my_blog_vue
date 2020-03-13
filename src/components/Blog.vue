@@ -48,15 +48,13 @@
             </el-pagination>
           </div>
 
-
         </div>
 
-        <div class = "search_input_btn">
-          <el-input v-model="input" placeholder="请输入内容" class="search_input"></el-input>
-          <el-button @click="handleBtnClick" size="medium" type="primary" class="search_btn">搜索</el-button>
-        </div>
-
-
+        <div class="right_layout">
+          <div class = "search_input_btn">
+            <el-input v-model="input" placeholder="请输入内容" class="search_input"></el-input>
+            <el-button @click="handleBtnClick" size="medium" type="primary" class="search_btn">搜索</el-button>
+          </div>
         <!-- <div class="hot_word">
           <el-button v-for="item1 of hot_word_list" :key="item1.id" @click="navigation_btn_click($event)">{{item1.word}}</el-button>
         </div> -->
@@ -64,16 +62,59 @@
         <!-- <div class="hot_word">
          <button class="hot_word_btn" v-for="item1 of hot_word_list" :key="item1.id" @click="navigation_btn_click($event)">{{item1.word}}</button>
         </div> -->
-        <div class=hot_word>
-          <div class="hot_word_title">搜索热词: </div>
-          <div id="tagCloud" class="tag_cloud"> </div>
+          <div class=hot_word>
+            <div class="hot_word_title">搜索热词: </div>
+            <div id="tagCloud" class="tag_cloud"> </div>
+          </div>
+
+          <div class="deeplearning">
+            <el-button @click="handleDrawer" type="primary" class="hot_article">
+            热门文章
+            </el-button>
+
+            <el-button @click="handleDeepLearning" type="primary" class="deep_btn">
+            深度学习模型测试
+            </el-button>
+          </div>
+          
+
+          <div class="wrapper_swiper">
+            <swiper :options="swiperOption">
+              <!-- slides -->
+              <swiper-slide v-for="item of list" :key="item.id">
+                <img class="swiper-img" :src="item.imgUrl" height="300px" width="550px"/>
+              </swiper-slide>
+              <div class="swiper-pagination"  slot="pagination"></div>
+            </swiper>
+          </div>
+
+          <el-collapse class="collapse" v-model="activeName" accordion>
+            <el-collapse-item title="分享几首喜欢的歌~" name="1" class="collapse_item">
+              <div>余香</div>
+              <div>世间</div>
+              <div>一个人的朝圣</div>
+              <div>桥边姑娘</div>
+            </el-collapse-item>
+            <el-collapse-item title="分享几本喜欢的书~" name="2" class="collapse_item">
+              <div>基地</div>
+              <div>基督山伯爵</div>
+              <div>永恒的终结</div>
+              <div>许三观卖血记</div>
+            </el-collapse-item>
+            <el-collapse-item title="喜欢胜过所有道理~" name="3" class="collapse_item">
+              <div>喜欢周围的人~</div>
+              <div>热爱生活~</div>
+            </el-collapse-item>
+          </el-collapse>
+
         </div>
 
-        <!-- <div class="deeplearning">
-          
-        </div> -->
+      
+      </div>
 
-        <el-drawer
+        
+
+      <el-drawer
           title="热门文章"
           style=""
           :visible.sync="drawer"
@@ -100,48 +141,7 @@
           </div>
         </el-drawer>
 
-        <div class="deeplearning">
-          <el-button @click="handleDrawer" type="primary" class="hot_article">
-          热门文章
-          </el-button>
-
-          <el-button @click="handleDeepLearning" type="primary" class="deep_btn">
-          深度学习模型测试
-          </el-button>
-        </div>
-        
-
-        <div class="wrapper_swiper">
-          <swiper :options="swiperOption">
-            <!-- slides -->
-            <swiper-slide v-for="item of list" :key="item.id">
-              <img class="swiper-img" :src="item.imgUrl" height="300px" width="550px"/>
-            </swiper-slide>
-            <div class="swiper-pagination"  slot="pagination"></div>
-          </swiper>
-        </div>
-
-        <el-collapse class="collapse" v-model="activeName" accordion>
-          <el-collapse-item title="分享几首喜欢的歌~" name="1" class="collapse_item">
-            <div>余香</div>
-            <div>世间</div>
-            <div>一个人的朝圣</div>
-            <div>桥边姑娘</div>
-          </el-collapse-item>
-          <el-collapse-item title="分享几本喜欢的书~" name="2" class="collapse_item">
-            <div>基地</div>
-            <div>基督山伯爵</div>
-            <div>永恒的终结</div>
-            <div>许三观卖血记</div>
-          </el-collapse-item>
-          <el-collapse-item title="喜欢胜过所有道理~" name="3" class="collapse_item">
-            <div>喜欢周围的人~</div>
-            <div>热爱生活~</div>
-          </el-collapse-item>
-        </el-collapse>
-
-      </div>
-
+      <a class="beian" href="http://www.beian.miit.gov.cn">鲁ICP备19010426号</a>
     
 
 
@@ -399,7 +399,7 @@
     margin-left: 30px;
     padding-left: 30px;
     border-left: 2px solid #D2E0E6;
-    font-family: "Microsoft YaHei UI";
+    font-family: "LiSu";
     font-weight: bold;
     font-size: 25px;
     float: left;
@@ -407,17 +407,18 @@
     /*border:1px solid red;*/
   }
   .hot_article {
-    margin-left: 35px;
-    margin-top: 10px;
-    width: 120px;
+    margin-left: 20%;
+    margin-top: 5%;
+    width: 70%;
   }
   .deep_btn {
-    margin-left: 20px;
-    margin-top: 40px;
+    margin-left: 10%;
+    margin-top: 20%;
+    width: 85%;
   }
   .deeplearning {
-    width: 200px;
-    height: 150px;
+    width: 29%;
+    height: 20%;
     /* border:1px solid red; */
     border-left: 2px solid #D2E0E6;
     font-family: "Microsoft YaHei UI";
@@ -444,18 +445,18 @@
     /* border: 1px solid red; */
   }
   .blog {
-    width: 760px;
-    height: 700px;
+    width: 45%;
+    height: 90%;
     margin-top: 10px;
-    margin-left: 8%;
+    margin-left: 4%;
     float: left;
     /* box-shadow:0 0 0.5px #666 ; */
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
   }
   .blog_block {
-    width: 760px;
-    height: 140px;
+    width: 99%;
+    height: 20%;
     border-bottom: 1px solid #D2E0E6;
     /* border: 1px solid blue; */
     float: left;
@@ -589,6 +590,13 @@
     margin-left: 5px;
   }
 
+  .right_layout {
+    float: left;
+    border: 1px solid #f6f6f6;
+    width: 40%;
+    height: 100%;
+  }
+
   .search_input_btn{
     float: left;
     width: 550px;
@@ -636,10 +644,11 @@
     font-family:  lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
   }
   .tag_cloud {
-    width: 200px;
-    height: 200px;
+    width: 60%;
+    height: 50%;
     float: left;
-    margin-left: 50px;
+    /* border: 1px solid red; */
+    margin-left: 10px;
   }
 
   .hot_word_btn {
@@ -693,6 +702,9 @@
   .collapse_item {
     margin-left: 5px;
     text-align: center;
+  }
+  .beian {
+    margin-left: 700px;
   }
 
 </style>
