@@ -31,7 +31,7 @@
                 <div class="time">时间: {{each_result.time}}</div>
                 <div class="read_quantity">阅读({{each_result.read_quantity}})</div>
               </div>
-              <div class="description">{{each_result.content.substring(0, 65)}}...</div>
+              <div class="description">{{each_result.content.substring(0, 55)}}...</div>
             </div>
 
           </div>
@@ -407,17 +407,17 @@
     /*border:1px solid red;*/
   }
   .hot_article {
-    margin-left: 20%;
-    margin-top: 5%;
-    width: 70%;
+    margin-left: 50px;
+    margin-top: 5px;
+    width: 120px;
   }
   .deep_btn {
-    margin-left: 10%;
-    margin-top: 20%;
-    width: 85%;
+    margin-left: 20px;
+    margin-top: 25px;
+    width: 150px;
   }
   .deeplearning {
-    width: 29%;
+    width: 1%;
     height: 20%;
     /* border:1px solid red; */
     border-left: 2px solid #D2E0E6;
@@ -460,6 +460,7 @@
     border-bottom: 1px solid #D2E0E6;
     /* border: 1px solid blue; */
     float: left;
+    overflow: hidden;
   }
   .blog_block:hover {
     background-color: #eaeaea;
@@ -492,12 +493,14 @@
   }
   .text_content {
     float: left;
-    width: 320px ;
-    height: 110px;
+    width: 30% ;
+    height: 80%;
     float: left;
     color: #555;
-    margin-top: 5px;
-    margin-left: 70px;
+    margin-top: 10px;
+    /* margin-top: 10%; */
+    margin-left: 65px;
+    
     /* border: 1px solid yellow; */
   }
   .hot_text_content {
@@ -595,13 +598,14 @@
     border: 1px solid #f6f6f6;
     width: 40%;
     height: 100%;
+    
   }
 
   .search_input_btn{
     float: left;
-    width: 550px;
-    height: 60px;
-    /*border: 1px solid red;*/
+    width: 100%;
+    height: 10%;
+    /* border: 1px solid red; */
     margin-left: 25px;
     margin-top: 10px;
   }
@@ -628,7 +632,8 @@
   }
 
   .hot_word {
-    width: 350px;
+    width: 50%;
+    height: 20%;
     margin-left: 30px;
     /* border: 1px solid red; */
     float: left;
@@ -644,7 +649,7 @@
     font-family:  lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
   }
   .tag_cloud {
-    width: 60%;
+    width: 4%;
     height: 50%;
     float: left;
     /* border: 1px solid red; */
