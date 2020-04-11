@@ -36,7 +36,6 @@
         <el-button class="btn" type="primary" @click="handleSubmitClick">提交</el-button>
       </el-row>
 
-
       <el-dialog
         title="提示"
         :visible.sync="submitTipDialog"

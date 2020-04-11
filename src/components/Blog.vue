@@ -184,7 +184,7 @@
               currentPage: 1,
               user: "user",
               hot_word_list: [
-              {id: 1, word: "cs231n"},
+              {id: 1, word: "CS231N"},
               {id: 2, word: "vscode"}, 
               {id: 5, word: "vue"},
               {id: 6, word: "go"},
@@ -194,8 +194,12 @@
               {id: 10, word: "c++"},
               {id: 11, word: "java"},
               {id: 12, word: "python"},
+              {id: 13, word: "Bert"},
+              {id: 14, word: "unilm"},
+              {id: 15, word: "seq2seq"},
+              {id: 16, word: "CS224N"}
               ], 
-              tagList: ["cs231n", "vscode", "vue", "go", "leetcode", "算法", "rnn", "c++", "java", "python", "rust", "attention", "socket", "pytorch", "word2vec"],
+              tagList: ["CS231N", "vscode", "vue", "go", "leetcode", "算法", "Rnn", "c++", "java", "python", "rust", "attention", "socket", "pytorch", "word2vec", "Bert", "unilm", "seq2seq", "CS224N", "LSTM"],
               
             }
         },
@@ -219,7 +223,11 @@
         mounted() {
             //标签云
             let container = document.getElementById('tagCloud')
-            TagCloud(container, this.tagList);
+            TagCloud(container, this.tagList, {
+              maxSpeed: "normal",
+              initSpeed: "slow",
+              keep: false,
+            });
             console.log(this.user)
             console.log("hahah is mounted!")
             //加载热门文章
