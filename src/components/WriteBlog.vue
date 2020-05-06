@@ -154,7 +154,7 @@
           console.log(response);
           console.log(file);
           console.log(fileList);
-          if (response.ret == "succ"){
+          if (response.ret == "success"){
             //证明文件上传成功了！
             this.mainImageUrl = response.url;
           }
