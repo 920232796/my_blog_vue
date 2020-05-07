@@ -1,41 +1,40 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Blog from "@/components/Blog"
-import ReadBlog from "@/components/ReadBlog"
-import LogIn from "@/components/LogIn"
-import WriteBlog from "@/components/WriteBlog"
-import EditBlog from "@/components/EditBlog"
+// import Vue from 'vue'
+// import Router from 'vue-router'
 import Deeplearning from "@/components/Deeplearning"
 import Chatbot from "@/components/Chatbot"
-Vue.use(Router)
+Vue.use(VueRouter)
 
-const router =  new Router({
+const router =  new VueRouter({
   routes: [
     {
       path: "/",
       name: "Blog",
-      component: Blog
+      component: () =>
+        import ("@/components/Blog")
     },
     {
       path: "/readBlog",
       name: "ReadBlog",
-      component: ReadBlog
+      component: () => 
+        import ("@/components/ReadBlog")
     },
     {
       path: "/login",
       name: "LogIn",
-      component: LogIn
+      component: () => 
+        import ("@/components/LogIn")
     },
     {
       path: "/writeBlog",
       name: "WriteBlog",
-      component: WriteBlog
+      component: () => 
+        import ("@/components/WriteBlog")
     },
     {
       path: "/editBlog",
       name: "EditBlog",
-      component: EditBlog
+      component: () =>
+        import ("@/components/EditBlog")
     }, 
     {
       path: "/deeplearning",
