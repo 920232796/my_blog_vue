@@ -1,11 +1,11 @@
-// import Vue from 'vue'
-// import Router from 'vue-router'
+import Vue from 'vue'
+import Router from 'vue-router'
 import Deeplearning from "@/components/Deeplearning"
 import Chatbot from "@/components/Chatbot"
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
-const router =  new VueRouter({
+const router =  new Router({
   routes: [
     {
       path: "/",

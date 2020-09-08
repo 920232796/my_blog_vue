@@ -88,7 +88,7 @@
             </swiper>
           </div>
 
-          <el-collapse class="collapse" v-model="activeName" accordion>
+          <el-collapse class="collapse"  accordion>
             <el-collapse-item title="分享几首喜欢的歌~" name="1" class="collapse_item">
               <div>余香</div>
               <div>世间</div>
@@ -150,6 +150,12 @@
 
 <script>
     import axios from "axios"
+    import Vue from "vue"
+    import VueParticles from 'vue-particles'//粒子效果的包
+    import VueAwesomeSwiper from 'vue-awesome-swiper'
+    import 'swiper/dist/css/swiper.css'
+    Vue.use(VueAwesomeSwiper)
+    Vue.use(VueParticles)  
     const TagCloud = require('TagCloud');
     export default {
         name: '',

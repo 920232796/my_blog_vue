@@ -27,7 +27,7 @@
               background
               :current-page="currentPage"
               @current-change="handleCurrentChange"
-              :page-size="pageSize"
+              :page-size="limit"
               layout="prev, pager, next"
               :total="totalNumber">
             </el-pagination>
