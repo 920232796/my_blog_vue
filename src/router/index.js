@@ -2,6 +2,7 @@
 // import Router from 'vue-router'
 import Deeplearning from "@/components/Deeplearning"
 import Chatbot from "@/components/Chatbot"
+
 Vue.use(VueRouter)
 
 const router =  new VueRouter({
@@ -50,12 +51,25 @@ const router =  new VueRouter({
           component: Chatbot
         },
       ]
+    },
+    {
+      path: "/mobile_index",
+      name: "MobileIndex",
+      component: () => 
+        import ("@/components/MobileIndex")
+    },
+    {
+      path: "/mobile_read",
+      name: "MobileRead",
+      component: () => 
+        import ("@/components/MobileReadBlog")
     }
   ]
 })
 
 router.beforeEach((to,from,next)=>{
-  if(to.path=="/login" | to.path == "/" | to.path == "/readBlog" | to.path == "/deeplearning" | to.path=="/deeplearning/chatbot"){
+  // alert(to.path)
+  if(to.path=="/login" | to.path == "/" | to.path == "/readBlog" | to.path == "/deeplearning" | to.path=="/deeplearning/chatbot" | to.path=="/mobile_index" | to.path=="/mobile_read"){
     next();
   }else{
     if(sessionStorage.user == "root"){

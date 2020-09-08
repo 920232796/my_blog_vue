@@ -215,7 +215,7 @@
             params: {
               start: this.start,
               limit: this.limit,
-              keyword: this.keyword
+              key_word: this.keyword
             }
           }).then(this.handleSearchSucc)
             
@@ -287,7 +287,7 @@
               params: {
                 start: this.start,
                 limit: this.limit,
-                keyword: this.keyword,
+                key_word: this.keyword,
               }
             }).then(this.handleSearchSucc)
 
@@ -301,7 +301,7 @@
               params: {
                 start: this.start,
                 limit: this.limit,
-                keyword: this.keyword,
+                key_word: this.keyword,
               }
             }).then(this.handleSearchSucc)
           },
@@ -317,7 +317,7 @@
                 params: {
                   start: this.start,
                   limit: this.limit,
-                  keyword: this.keyword
+                  key_word: this.keyword
                 }
               }).then(this.handleSearchSucc)
             }
@@ -349,7 +349,6 @@
             }
 
           }
-
 
         }
     }
