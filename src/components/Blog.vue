@@ -336,16 +336,16 @@
 //            tempwindow.location="/#/readBlog"
 //            this.$router.push("/readBlog")
             if (this.user == "user"){
-              let routeData = this.$router.resolve({ path: "/readBlog",
+              let routeData = this.$router.push({ path: "/readBlog",
                 query: {  blogId: eachResult.id} });
 //            routeData.href = "/#/readBlog"
-              window.open(routeData.href, '_blank');
+              // window.open(routeData.href, '_blank');
             }
             if (this.user == "root") {
               console.log("hello world !")
-              let routeData = this.$router.resolve({ path: "/editBlog",
+              let routeData = this.$router.push({ path: "/editBlog",
                 query: {  blogId: eachResult.id} });
-              window.open(routeData.href, '_blank');
+              // window.open(routeData.href, '_blank');
             }
 
           }

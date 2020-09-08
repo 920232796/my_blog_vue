@@ -104,7 +104,7 @@ export default {
     },
     handleContentClick(eachResult) {
 
-      let routeData = this.$router.replace({ path: "/mobile_read",
+      let routeData = this.$router.push({ path: "/mobile_read",
         query: {  blogId: eachResult.id} });
       // window.open(routeData.href, '_blank');
     
