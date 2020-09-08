@@ -89,9 +89,9 @@
     /* background-color: #f6f6f6; */
     /* background-color: #E0E3DA; */
     /*background-color: #2b81af;*/
-    width: 100%;
+    width: 100vw;
     height: auto;
-    /*border: 1px solid green;*/
+    /* border: 1px solid green; */
   }
   .wrapper {
     width: 100%;
@@ -101,7 +101,7 @@
 
   .content{
     /* background-color: #ffffff; */
-    width: 80%;
+    width: 95%;
     height: auto;
     margin: 10px auto;
     font-size: 12px;
@@ -136,7 +136,7 @@
     background-color: white;
   }
   .md {
-    width: 100%;
+    /* width: 300px; */
     margin: 10px auto;
     font-size: 12px;
   }
