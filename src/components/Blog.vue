@@ -165,11 +165,11 @@
               index: 0,//热门文章下滑的时候 index会增加 然后请求新数据
               drawer: false,
               direction: 'rtl',
-              list: [{id: 1, imgUrl:require("@/assets/juzi.jpg")},
-                {id: 2, imgUrl: require("@/assets/deng.jpg")},
+              list: [{id: 1, imgUrl:"https://blog-image-xzh.oss-cn-beijing.aliyuncs.com/d576bb2b-922b-4574-87a7-b69acd8da446.jpg"},
+                {id: 2, imgUrl: "https://blog-image-xzh.oss-cn-beijing.aliyuncs.com/8d0a071c-4eb5-418b-8a75-45aebfdd0b9f.jpg"},
                 // {id: 3, imgUrl: require("@/assets/swiper-3.jpeg")},
-                {id: 4, imgUrl: require("@/assets/haokan.jpg")},
-                {id: 5, imgUrl: require("@/assets/x.jpg")},
+                {id: 4, imgUrl: "https://blog-image-xzh.oss-cn-beijing.aliyuncs.com/9c017397-da8d-447d-be1a-60b6560cad01.jpg"},
+                {id: 5, imgUrl: "https://blog-image-xzh.oss-cn-beijing.aliyuncs.com/c1828e9a-6035-4040-87b6-30555d4f4477.jpg"},
                 // {id: 6, imgUrl: require("@/assets/shenzhen.jpg")}
                 
                 ],
