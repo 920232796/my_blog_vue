@@ -42,6 +42,7 @@
 //    })
     import { mavonEditor } from 'mavon-editor'
     import axios from "axios"
+    import { Loading } from 'element-ui';
     export default {
         name: '',
         data () {
@@ -49,7 +50,8 @@
               blogContent: "",
               blogTitle: "",
               blogTime: "",
-              blogId: -1
+              blogId: -1,
+              loading: "",
 //              articleDetail: ""
             }
         },
@@ -69,7 +71,9 @@
         },
         mounted() {
 
-          this.blogId = this.$route.query.blogId;
+          this.blogId = this.$route.params.id;
+          console.log(this.blogId)
+          this.openLoading()
           axios.get("/api/getBlog",{
             params: {
               id: this.blogId
@@ -83,6 +87,10 @@
             this.blogContent = res.obj.content;
             this.blogTitle = res.obj.title;
             this.blogTime = res.obj.time;
+            this.loadingInstance.close()
+          },
+          openLoading() {
+            this.loadingInstance = Loading.service({ fullscreen: true });
           }
         }
     }

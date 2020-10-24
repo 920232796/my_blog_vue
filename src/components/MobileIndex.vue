@@ -6,7 +6,7 @@
       <div id="tagCloud" class="tag_cloud"> </div>
       <!-- <ManageNavi class="navi" /> -->
       <div class="blog">
-          <div class="blog_block" v-for="each_result of resultList" :key="each_result.id" @click="handleContentClick(each_result)">
+          <div class="blog_block" v-for="each_result of resultList" :key="each_result.id" @click="handleContentClick(each_result.id)">
             <div class="image_wrapper">
               <img :src="each_result.image" alt="暂无"  class="blog_image" align="middle" height="80" width="120">
             </div>
@@ -23,7 +23,7 @@
 
           <div class="block">
             <el-pagination
-              small="true"
+              :small="true"
               background
               :current-page="currentPage"
               @current-change="handleCurrentChange"
@@ -54,6 +54,7 @@ export default {
       limit: 5,
       resultList: [],
       totalNumber: 0,
+      currentPage: 1,
       articleClass: "本篇",
       keyword: "本篇",
       tagList: ["CS231N", "vscode", "vue", "go", "leetcode", "算法", "Rnn", "c++", "java", "python", "rust", "attention", "socket", "pytorch", "word2vec", "Bert", "unilm", "seq2seq", "CS224N", "LSTM"],
@@ -102,10 +103,10 @@ export default {
       this.totalNumber = res.total_number
       this.$message('操作成功');
     },
-    handleContentClick(eachResult) {
+    handleContentClick(id) {
 
-      let routeData = this.$router.push({ path: "/mobile_read",
-        query: {  blogId: eachResult.id} });
+      let routeData = this.$router.push({ path: "/mobile_read/" + id ,
+        });
       // window.open(routeData.href, '_blank');
     
     }

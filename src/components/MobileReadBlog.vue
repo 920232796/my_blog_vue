@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+      <el-button type="small" icon="el-icon-menu" @click="back_to_index">回到主页</el-button>
       <div class="wrapper">
       <div class="content">
         <div class="title">{{this.blogTitle}}</div>
@@ -38,6 +39,7 @@
 //    })
     import { mavonEditor } from 'mavon-editor'
     import axios from "axios"
+    import { Loading } from 'element-ui';
     export default {
         name: '',
         data () {
@@ -65,7 +67,8 @@
         },
         mounted() {
 
-          this.blogId = this.$route.query.blogId;
+          this.blogId = this.$route.params.id;
+          this.openLoading()
           axios.get("/api/getBlog",{
             params: {
               id: this.blogId
@@ -79,6 +82,13 @@
             this.blogContent = res.obj.content;
             this.blogTitle = res.obj.title;
             this.blogTime = res.obj.time;
+            this.loadingInstance.close()
+          },
+          openLoading() {
+            this.loadingInstance = Loading.service({ fullscreen: true });
+          },
+          back_to_index() {
+            this.$router.replace("/mobile_index")
           }
         }
     }

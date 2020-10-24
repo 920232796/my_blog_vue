@@ -14,7 +14,7 @@ const router =  new Router({
         import ("@/components/Blog")
     },
     {
-      path: "/readBlog",
+      path: "/readBlog/:id",
       name: "ReadBlog",
       component: () => 
         import ("@/components/ReadBlog")
@@ -59,7 +59,7 @@ const router =  new Router({
         import ("@/components/MobileIndex")
     },
     {
-      path: "/mobile_read",
+      path: "/mobile_read/:id",
       name: "MobileRead",
       component: () => 
         import ("@/components/MobileReadBlog")
@@ -69,7 +69,7 @@ const router =  new Router({
 
 router.beforeEach((to,from,next)=>{
   // alert(to.path)
-  if(to.path=="/login" | to.path == "/" | to.path == "/readBlog" | to.path == "/deeplearning" | to.path=="/deeplearning/chatbot" | to.path=="/mobile_index" | to.path=="/mobile_read"){
+  if(to.path=="/login" | to.path == "/" | to.path.substring(0,9) == "/readBlog" | to.path == "/deeplearning" | to.path=="/deeplearning/chatbot" | to.path=="/mobile_index" | to.path.substring(0,12)=="/mobile_read"){
     next();
   }else{
     if(sessionStorage.user == "root"){

@@ -10,7 +10,21 @@ export default {
   mounted() {
     if (this._isMobile()) {
       // alert("手机端");
-      this.$router.replace('/mobile_index');
+      let path1 = window.location.href.split("/")
+      console.log(path1)
+      let index = path1.pop()
+      console.log(index)
+      var re = /^[0-9]+.?[0-9]*/;
+      if (!re.test(index)) {
+        // 不是数字
+        console.log("hello")
+        this.$router.replace('/mobile_index');
+      } else {
+          
+          let path = "mobile_read/" + index
+          this.$router.replace(path)
+      }
+     
     }
   },
   methods: {
