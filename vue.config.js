@@ -1,10 +1,10 @@
 
-
 // 在vue-config.js 中加入
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const productionGzipExtensions = ['js', 'css'];
 const isProduction = process.env.NODE_ENV === 'production';
 
+// vue-config.js 文件
 module.exports = {
     chainWebpack: config => {
         // 生产模式
@@ -14,7 +14,6 @@ module.exports = {
             // CDN - externals
             config.set('externals', {
             vue: 'Vue',
-            // 'vue-router': 'Router',
             axios: 'axios',
             'element-ui': 'ELEMENT'
             })

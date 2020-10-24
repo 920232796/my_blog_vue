@@ -51,6 +51,7 @@
         </div>
 
         <div class="right_layout">
+          
           <div class = "search_input_btn">
             <el-input v-model="input" placeholder="请输入内容" class="search_input"></el-input>
             <el-button @click="handleBtnClick" size="medium" type="primary" class="search_btn">搜索</el-button>
