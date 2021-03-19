@@ -4,7 +4,7 @@
       <div class="wrapper">
       <div class="content">
         <div class="title">{{this.blogTitle}}</div>
-        <div class="middle">时间: {{this.blogTime}}</div>
+        <div class="middle">时间1: {{this.blogTime}}</div>
         <!--<article class="blog_conent" v-html="compiledMarkdown"></article>-->
         <mavon-editor
           class="md"
