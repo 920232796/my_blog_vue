@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import { Button, Input, Collapse, Pagination, CollapseItem, Drawer, Menu, MenuItem, Upload, Row, Message} from 'element-ui';
+import { Button, Input, Collapse, Pagination, CollapseItem, Drawer, Menu, MenuItem, Upload, Row, Message, Loading} from 'element-ui';
 // import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
@@ -19,6 +19,7 @@ Vue.use(Menu)
 Vue.use(MenuItem)
 Vue.use(Upload)
 Vue.use(Row)
+Vue.use(Loading)
 Vue.prototype.$message = Message;
 
 

@@ -86,6 +86,14 @@ module.exports = {
                 pathRewrite: {
                   '^/chat': '/chat/'
                 }
+            },
+            "/nlp": {
+                target: "http://127.0.0.1:5555/",
+                // target: "http://47.100.10.8:8888",
+                pathRewrite: {
+                    '^/nlp': ''
+                },
+                changeOrigin: true,
             }
         }
     },
