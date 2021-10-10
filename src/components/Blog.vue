@@ -69,6 +69,11 @@
           </div>
 
           <div class="deeplearning">
+
+            <el-button @click="handleArticle" type="primary" class="hot_article">
+            论文阅读
+            </el-button>
+
             <el-button @click="handleDrawer" type="primary" class="hot_article">
             热门文章
             </el-button>
@@ -113,8 +118,7 @@
       
       </div>
 
-        
-
+      
       <el-drawer
           title="热门文章"
           style=""
@@ -248,6 +252,10 @@
             }).then(this.handleSearchHotBlogSucc)
         },
         methods: {
+
+          handleArticle() {
+            this.$router.push("/article")
+          },
           handleDrawerClose(done) {
             done()
           },
@@ -422,12 +430,12 @@
   }
   .hot_article {
     margin-left: 50px;
-    margin-top: 5px;
+    margin-top: 15px;
     width: 120px;
   }
   .deep_btn {
     margin-left: 20px;
-    margin-top: 25px;
+    margin-top: 15px;
     width: 150px;
   }
   .deeplearning {

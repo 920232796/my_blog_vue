@@ -45,6 +45,12 @@ const router =  new Router({
         import ("@/components/EditBlog")
     }, 
     {
+      path: "/article",
+      name: "Article",
+      component: () =>
+        import ("@/components/Article")
+    },
+    {
       path: "/deeplearning",
       name: "Deeplearning", 
       component: Deeplearning,
@@ -105,7 +111,7 @@ const router =  new Router({
 
 router.beforeEach((to,from,next)=>{
   // alert(to.path)
-  if(to.path=="/login" | to.path == "/" | to.path.substring(0,9) == "/readBlog" | to.path.search("/deeplearning") != -1 | to.path=="/mobile_index" | to.path.substring(0,12)=="/mobile_read"){
+  if(to.path=="/login" | to.path == "/" | to.path.substring(0,9) == "/readBlog" | to.path.search("/deeplearning") != -1 | to.path=="/mobile_index" | to.path.substring(0,12)=="/mobile_read" | to.path=="/article"){
     next();
   }else{
     if(sessionStorage.user == "root"){
