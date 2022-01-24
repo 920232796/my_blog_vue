@@ -351,7 +351,7 @@
 //            tempwindow.location="/#/readBlog"
 //            this.$router.push("/readBlog")
             if (this.user == "user"){
-              let routeData = this.$router.push({ path: "/readBlog/" + eachResult.id ,
+              let routeData = this.$router.push({ path: "/readBlog/" + eachResult.id 
                });
 //            routeData.href = "/#/readBlog"
               // window.open(routeData.href, '_blank');

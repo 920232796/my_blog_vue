@@ -1,9 +1,8 @@
 <template>
     <div class="container">
       <div class="wrapper">
-      <div class="message">
-        <img src="@/assets/message.png" alt="" class="message_image" width="30px" height="30px">
-        <div class="message_text">不可评论,问题咨询请加QQ:920232796</div>
+      <div class="image">
+        <img :src="this.blogImage" alt="" style="width: 50%; height:300px; margin-left: 25%">
       </div>
       <div class="content">
         <div class="title">{{this.blogTitle}}</div>
@@ -52,6 +51,7 @@
               blogTime: "",
               blogId: -1,
               loading: "",
+              blogImage: "",
 //              articleDetail: ""
             }
         },
@@ -87,6 +87,7 @@
             this.blogContent = res.obj.content;
             this.blogTitle = res.obj.title;
             this.blogTime = res.obj.time;
+            this.blogImage = res.obj.image
             this.loadingInstance.close()
           },
           openLoading() {
@@ -111,6 +112,10 @@
     /* border: 1px solid #f6f6f6; */
   }
 
+  .image {
+    /* border: 1px solid red; */
+    /* margin: 20px auto; */
+  }
   .message {
     width: 300px;
     height: 80px;
